@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pokemon_gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Barra superior ronda + puntuación -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_online_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ronda "
+                    android:textColor="#FFFFFFBB"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvRonda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1/10"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_racha_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⭐ "
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvPuntuacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#FFDE00"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Timer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text="15"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@drawable/bg_timer_circle"
+                android:layout_marginEnd="10dp" />
+            <ProgressBar
+                android:id="@+id/progressTimer"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="100"
+                android:progressDrawable="@drawable/progress_timer"
+                android:background="@drawable/bg_progress_track" />
+        </LinearLayout>
+
+        <!-- Chip tipo pregunta -->
+        <TextView
+            android:id="@+id/tvTipoPregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👁 ¿QUIÉN ES?"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:background="@drawable/bg_tipo_chip"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Imagen Pokémon -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#22000000">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/ivPokemon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:contentDescription="Pokémon" />
+                <TextView
+                    android:id="@+id/tvPregunta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="¿De qué tipo es este Pokémon?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_pregunta_gradient"
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- PIEZAS DE PUZZLE 2x2                       -->
+        <!-- ══════════════════════════════════════════ -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="4dp">
+
+            <!-- A — Cian — TOP_LEFT -->
+            <com.example.pokehoot_aplicacionandroid.views.PuzzlePieceView
+                android:id="@+id/pieceA"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="0dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- B — Naranja — TOP_RIGHT -->
+            <com.example.pokehoot_aplicacionandroid.views.PuzzlePieceView
+                android:id="@+id/pieceB"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="0dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- C — Amarillo — BOTTOM_LEFT -->
+            <com.example.pokehoot_aplicacionandroid.views.PuzzlePieceView
+                android:id="@+id/pieceC"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="0dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- D — Morado — BOTTOM_RIGHT -->
+            <com.example.pokehoot_aplicacionandroid.views.PuzzlePieceView
+                android:id="@+id/pieceD"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="0dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+    <!-- Overlay Feedback -->
+    <LinearLayout
+        android:id="@+id/layoutFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#CC000000"
+        android:visibility="gone"
+        android:elevation="20dp">
+
+        <TextView
+            android:id="@+id/tvFeedbackIcono"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:text="✓"
+            android:textColor="#FFFFFF"
+            android:textSize="42sp"
+            android:gravity="center"
+            android:background="@drawable/bg_feedback_correcto"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvFeedbackTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Correcto!"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvFeedbackRespuesta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFFCC"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="32dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutPuntosGanados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_racha_badge"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⭐ "
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvPuntosGanados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1000"
+                android:textColor="#FFDE00"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" puntos"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvBonusRacha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔥 ¡Racha! +100 bonus"
+            android:textColor="#FFDE00"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</FrameLayout>

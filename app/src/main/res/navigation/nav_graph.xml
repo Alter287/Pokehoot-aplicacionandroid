@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/iniciarSesionFragmento">
+
+    <fragment
+        android:id="@+id/iniciarSesionFragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.IniciarSesionFragmento"
+        android:label="IniciarSesionFragmento" />
+    <fragment
+        android:id="@+id/dentrosalafragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.dentrosalafragmento"
+        android:label="dentrosalafragmento" />
+    <fragment
+        android:id="@+id/estadisticasfragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.estadisticasfragmento"
+        android:label="estadisticasfragmento" />
+    <fragment
+        android:id="@+id/menuprincipalfragment"
+        android:name="com.example.pokehoot_aplicacionandroid.menuprincipalfragment"
+        android:label="menuprincipalfragment" />
+    <fragment
+        android:id="@+id/perdidofragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.perdidofragmento"
+        android:label="perdidofragmento" />
+    <fragment
+        android:id="@+id/preguntasmenufragment"
+        android:name="com.example.pokehoot_aplicacionandroid.preguntasmenufragment"
+        android:label="preguntasmenufragment" />
+    <fragment
+        android:id="@+id/rankingfragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.rankingfragmento"
+        android:label="rankingfragmento" />
+    <fragment
+        android:id="@+id/salasfragmento"
+        android:name="com.example.pokehoot_aplicacionandroid.salasfragmento"
+        android:label="salasfragmento" />
+    <fragment
+        android:id="@+id/registrarusuario"
+        android:name="com.example.pokehoot_aplicacionandroid.registrarusuario"
+        android:label="registrarusuario" />
+</navigation>
