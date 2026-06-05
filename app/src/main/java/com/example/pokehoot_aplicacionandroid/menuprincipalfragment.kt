@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.pokehoot_aplicacionandroid.databinding.MenuprincipalfragmentoBinding
+import androidx.core.content.edit
 
 class menuprincipalfragment : Fragment(){
     private var _binding: MenuprincipalfragmentoBinding? = null
@@ -27,12 +28,15 @@ class menuprincipalfragment : Fragment(){
 
         val prefs = requireContext().getSharedPreferences("pokehoot", Context.MODE_PRIVATE)
         val username = prefs.getString("username", "Entrenador")
-        val mejorRacha = prefs.getInt("mejorRacha", 0)
 
         binding.tvNombreJugador.text = username
-        binding.tvMejorRacha.text = mejorRacha.toString()
 
         binding.tvJugadoresOnline.text = "0 online"
+
+        binding.btnCerrarSesion.setOnClickListener {
+            prefs.edit { clear() }
+            findNavController().navigate(R.id.iniciarSesionFragmento)
+        }
 
         binding.btnCrearSala.setOnClickListener {
             val bundle = Bundle().apply {

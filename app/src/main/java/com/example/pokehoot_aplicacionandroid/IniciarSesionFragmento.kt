@@ -32,6 +32,11 @@ class IniciarSesionFragmento : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (VerificarSesion.estaSesionActiva(requireContext())) {
+            findNavController().navigate(R.id.menuprincipalfragment)
+            return
+        }
+
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
