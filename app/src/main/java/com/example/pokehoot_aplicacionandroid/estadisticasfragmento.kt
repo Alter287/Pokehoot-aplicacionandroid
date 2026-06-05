@@ -66,7 +66,6 @@ class estadisticasfragmento : Fragment() {
                     } else 0
                     binding.tvWinRate.text = "$winRate% victorias"
 
-                    // Fecha actualización
                     val formato = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
                     binding.tvActualizadoEn.text = "Actualizado: ${formato.format(Date())}"
 
