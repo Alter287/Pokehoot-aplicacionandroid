@@ -341,7 +341,7 @@
                             android:id="@+id/tercerNombre"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Brock"
+                            android:text=""
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
@@ -352,7 +352,7 @@
                             android:id="@+id/tercerPuntuacion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="950"
+                            android:text="0"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             android:textStyle="bold" />

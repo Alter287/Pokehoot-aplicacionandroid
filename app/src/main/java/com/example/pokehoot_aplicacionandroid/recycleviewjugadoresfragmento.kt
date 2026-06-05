@@ -5,27 +5,35 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokehoot_aplicacionandroid.DataClass.respuestalogeo
+import com.example.pokehoot_aplicacionandroid.DataClass.JugadorSala
 
-class recycleviewjugadoresfragmento(private val listaJugadores: MutableList<respuestalogeo>) :
-    RecyclerView.Adapter<recycleviewjugadoresfragmento.recycleviewjugadoresfragmento>() {
+class recycleviewjugadoresfragmento(private val listaJugadores: MutableList<JugadorSala>) :
+    RecyclerView.Adapter<recycleviewjugadoresfragmento.JugadorViewHolder>() {
 
-    class recycleviewjugadoresfragmento(view: View) : RecyclerView.ViewHolder(view) {
+    class JugadorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombre: TextView = view.findViewById(R.id.tvJugador)
-        val estado:  TextView = view.findViewById(R.id.tvEstado)
+        val estado: TextView = view.findViewById(R.id.tvEstado)
+        val host: TextView = view.findViewById(R.id.tvHost)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): recycleviewjugadoresfragmento {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycleviewjugadoresitem, parent, false)
-
-        return recycleviewjugadoresfragmento(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JugadorViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycleviewjugadoresitem, parent, false)
+        return JugadorViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: recycleviewjugadoresfragmento, position: Int) {
-
+    override fun onBindViewHolder(holder: JugadorViewHolder, position: Int) {
+        val jugador = listaJugadores[position]
+        holder.nombre.text = jugador.nombre
+        holder.estado.text = "Listo para jugar"
+        holder.host.visibility = if (jugador.esHost) View.VISIBLE else View.GONE
     }
 
-    override fun getItemCount(): Int {
-        return listaJugadores.size
+    override fun getItemCount(): Int = listaJugadores.size
+
+    fun actualizarJugadores(nuevaLista: List<JugadorSala>) {
+        listaJugadores.clear()
+        listaJugadores.addAll(nuevaLista)
+        notifyDataSetChanged()
     }
 }

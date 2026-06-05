@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okio.Buffer
 
 object RetrofitClient {
-    private const val BASE_URL = "pokehoot-server-production.up.railway.app/"
+    private const val BASE_URL = "https://pokehoot-server-production.up.railway.app/"
     private const val API_KEY = "hola"
     // interceptor pàra colocar la apikey en todas las peticones de la api  automaticamente
     private val apiKeyInterceptor = Interceptor { chain ->

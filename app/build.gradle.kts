@@ -54,6 +54,10 @@ dependencies {
 
     // Para usar BuildConfig (necesario para API_KEY)
     implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.9.0-1.0.13")
+    //Para el socket.io
+    implementation("io.socket:socket.io-client:2.1.0")
+    //Para las imagenes de los pokimons
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 

@@ -41,37 +41,33 @@ class IniciarSesionFragmento : Fragment() {
             } else {
                 lifecycleScope.launch {
                     try {
-                        val response =
-                            RetrofitClient.instance.login(IntentarLogear(email, password))
-
+                        val response = RetrofitClient.instance.login(IntentarLogear(email, password))
                         if (response.success) {
-                            val prefs =
-                                requireContext().getSharedPreferences(
-                                    "pokehoot",
-                                    Context.MODE_PRIVATE
-                                )
+                            val prefs = requireContext().getSharedPreferences("pokehoot", Context.MODE_PRIVATE)
                             prefs.edit {
                                 putString("token", response.token)
-                                    .putString("username", response.username)
-                                    .putInt("userId", response.userId ?: 0)
+                                putString("username", response.username)
+                                putInt("userId", response.userId ?: 0)
                             }
-
                             findNavController().navigate(R.id.menuprincipalfragment)
-
                         } else {
-                            Toast.makeText(requireContext(), response.error, Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(requireContext(), response.error ?: "Error desconocido", Toast.LENGTH_SHORT).show()
                         }
-
+                    } catch (e: retrofit2.HttpException) {
+                        val errorBody = e.response()?.errorBody()?.string()
+                        val mensaje = try {
+                            org.json.JSONObject(errorBody ?: "").getString("error")
+                        } catch (ex: Exception) {
+                            "Correo o contraseña incorrectos"
+                        }
+                        Toast.makeText(requireContext(), mensaje, Toast.LENGTH_SHORT).show()
                     } catch (e: Exception) {
-                        Toast.makeText(requireContext(), "Error de conexión", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(requireContext(), "Error de conexión", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
 
-        // Navegar al registro
         binding.tvRegistro.setOnClickListener {
             findNavController().navigate(R.id.registrarusuario)
         }
