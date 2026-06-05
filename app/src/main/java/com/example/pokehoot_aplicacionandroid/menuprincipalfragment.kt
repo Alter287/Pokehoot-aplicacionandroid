@@ -31,8 +31,6 @@ class menuprincipalfragment : Fragment(){
 
         binding.tvNombreJugador.text = username
 
-        binding.tvJugadoresOnline.text = "0 online"
-
         binding.btnCerrarSesion.setOnClickListener {
             prefs.edit { clear() }
             findNavController().navigate(R.id.iniciarSesionFragmento)
