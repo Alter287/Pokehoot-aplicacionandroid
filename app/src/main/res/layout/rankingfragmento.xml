@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- CONTENIDO PRINCIPAL -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +12,6 @@
         android:gravity="center_horizontal"
         android:padding="20dp">
 
-        <!-- ── HEADER CON TÍTULO ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +43,6 @@
 
         </LinearLayout>
 
-        <!-- ── TUS RESULTADOS (jugador actual) ── -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +72,6 @@
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <!-- Posición -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -112,7 +108,6 @@
                         android:layout_height="40dp"
                         android:background="#E0E0E0" />
 
-                    <!-- Puntuación -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -149,7 +144,6 @@
                         android:layout_height="40dp"
                         android:background="#E0E0E0" />
 
-                    <!-- Racha -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -184,7 +178,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ── PODIO (TOP 3) ── -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -201,7 +194,6 @@
             android:gravity="bottom"
             android:layout_marginBottom="20dp">
 
-            <!-- 2do Lugar (izquierda) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -254,7 +246,6 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- 1er Lugar (centro, más grande) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1.2"
@@ -307,7 +298,6 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- 3er Lugar (derecha) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -361,7 +351,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- ── RANKING COMPLETO ── -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -390,7 +379,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Cabecera del ranking -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -438,15 +426,10 @@
                             android:textStyle="bold"
                             android:gravity="end" />
                     </LinearLayout>
-
-                    <!-- Aquí se añadirán dinámicamente los items del ranking -->
-                    <!-- Los items se generarán en código con RecyclerView o dinámicamente -->
-
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
 
-        <!-- ── BOTONES DE ACCIÓN ── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -486,7 +469,6 @@
 
     </LinearLayout>
 
-    <!-- POKEBOLAS DECORATIVAS -->
     <ImageView
         android:layout_width="180dp"
         android:layout_height="180dp"

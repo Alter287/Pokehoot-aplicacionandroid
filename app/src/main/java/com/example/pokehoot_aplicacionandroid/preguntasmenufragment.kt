@@ -61,12 +61,12 @@ class preguntasmenufragment : Fragment() {
         configurarEventosSocket()
         configurarBotonesOpciones()
 
-        // Si es solitario iniciamos la partida directamente
+        // Si es solitario iniciamos la partida directamente.
         if (modo == "solitario") {
             val prefs = requireContext().getSharedPreferences("pokehoot", Context.MODE_PRIVATE)
             val userId = prefs.getInt("userId", 0)
             socket.emit("solitario:iniciar", JSONObject().put("userId", userId))
-            // En solitario no hay rondas fijas, ocultamos el contador
+            // En solitario hay rondas infinitas.
             binding.tvRonda.text = "∞"
         }else{
             val primeraPreguntaStr = arguments?.getString("primeraPregunta")
@@ -105,12 +105,13 @@ class preguntasmenufragment : Fragment() {
         }
     }
 
-    // ─── EVENTOS MULTIJUGADOR ────────────────────────────────────────────────
+    // Multijugador
 
     private fun configurarEventosMultijugador() {
+        //Lo mismo que en el otro lado de especificar socket
         listenerPreguntaMulti = io.socket.emitter.Emitter.Listener { args ->
             val data = args[0] as JSONObject
-            Log.d("PREGUNTA", "Nueva pregunta recibida: $data")
+            Log.d("nose", "Nueva pregunta recibida: $data")
             activity?.runOnUiThread { mostrarPregunta(data) }
         }
         socket.on("pregunta", listenerPreguntaMulti)
@@ -122,7 +123,7 @@ class preguntasmenufragment : Fragment() {
 
         socket.on("fin_partida") { args ->
             val data = args[0] as JSONObject
-            activity?.runOnUiThread { guardarEstadisticasYNavegar(data) }
+            activity?.runOnUiThread { GuardarEstadisticasParaRanking(data) }
         }
 
         socket.on(Socket.EVENT_DISCONNECT) {
@@ -132,17 +133,15 @@ class preguntasmenufragment : Fragment() {
         }
     }
 
-    // ─── EVENTOS SOLITARIO ───────────────────────────────────────────────────
+    // Solitario
 
     private fun configurarEventosSolitario() {
 
-        // Partida iniciada
         socket.on("solitario:iniciado") { _ ->
             activity?.runOnUiThread {
             }
         }
 
-        // Recibir pregunta solitario
         socket.on("solitario:pregunta") { args ->
             val data = args[0] as JSONObject
             activity?.runOnUiThread {
@@ -155,7 +154,6 @@ class preguntasmenufragment : Fragment() {
             }
         }
 
-        // Resultado correcto en solitario
         socket.on("solitario:resultado") { args ->
             val data = args[0] as JSONObject
             Log.d("nose", "Solitario:resultado recibido: $data")
@@ -168,7 +166,6 @@ class preguntasmenufragment : Fragment() {
                 rachaActual = data.getInt("racha")
                 preguntasCorrectas++
 
-                // Colorear opciones
                 opciones.forEachIndexed { index, opcion ->
                     opcion.setCardBackgroundColor(
                         if (index == respuestaCorrecta) 0xFF4CAF50.toInt()
@@ -176,7 +173,6 @@ class preguntasmenufragment : Fragment() {
                     )
                 }
 
-                // Mostrar feedback
                 binding.tvPuntuacion.text = puntuacion.toString()
                 binding.tvFeedbackIcono.text = "✓"
                 binding.tvFeedbackIcono.setBackgroundResource(R.drawable.bg_feedback_correcto)
@@ -195,13 +191,11 @@ class preguntasmenufragment : Fragment() {
             }
         }
 
-        // Fin solitario — perdiste
-        // Fin solitario — perdiste
         socket.on("solitario:fin") { args ->
             val data = args[0] as JSONObject
             Log.d("nose", "Solitario:fin recibido: $data")
             activity?.runOnUiThread {
-                if (_binding == null) return@runOnUiThread  // ✅ fragment ya destruido
+                if (_binding == null) return@runOnUiThread
 
                 val respuestaCorrecta = data.getInt("respuestaCorrecta")
 
@@ -221,13 +215,12 @@ class preguntasmenufragment : Fragment() {
                 binding.tvBonusRacha.visibility = View.GONE
                 binding.layoutFeedback.visibility = View.VISIBLE
 
-                // ✅ Guardamos los datos antes del delay
                 val puntuacionFinal = data.getInt("puntuacion")
                 val rachaFinal = data.getInt("racha")
                 val correctasFinal = data.getInt("rondas") - 1
 
                 view?.postDelayed({
-                    if (_binding == null) return@postDelayed  // ✅ segunda comprobación tras el delay
+                    if (_binding == null) return@postDelayed
                     val bundle = Bundle().apply {
                         putInt("puntuacion", puntuacionFinal)
                         putInt("racha", rachaFinal)
@@ -252,7 +245,7 @@ class preguntasmenufragment : Fragment() {
         }
     }
 
-    // ─── FUNCIONES COMPARTIDAS ───────────────────────────────────────────────
+    // Pa los 2
 
     private fun mostrarPregunta(data: JSONObject) {
         yaRespondio = false
@@ -276,10 +269,14 @@ class preguntasmenufragment : Fragment() {
         binding.tvPuntuacion.text = puntuacion.toString()
 
         binding.tvTipoPregunta.text = when (tipo) {
-            "nombre" -> "¿Qué Pokémon es?"
-            "tipo" -> "¿De qué tipo es?"
-            "numero" -> "¿Qué número de Pokédex tiene?"
-            else -> "Pregunta"
+            "nombre"     -> "¿Qué Pokémon es?"
+            "tipo"       -> "¿De qué tipo es?"
+            "numero"     -> "¿Cuál es su número en la Pokédex?"
+            "generacion" -> "¿De qué generación es?"
+            "habilidad"  -> "¿Cuál es una habilidad de este Pokémon?"
+            "evolucion"  -> "¿Cómo evoluciona este Pokémon?"
+            "genero"     -> "¿Cuál es el género de este Pokémon?"
+            else         -> "Pregunta"
         }
 
         if (silueta) {
@@ -373,7 +370,7 @@ class preguntasmenufragment : Fragment() {
         binding.layoutFeedback.visibility = View.VISIBLE
     }
 
-    private fun guardarEstadisticasYNavegar(data: JSONObject) {
+    private fun GuardarEstadisticasParaRanking(data: JSONObject) {
         val prefs = requireContext().getSharedPreferences("pokehoot", Context.MODE_PRIVATE)
         val userId = prefs.getInt("userId", 0)
         val clasificacion = data.getJSONArray("clasificacion")

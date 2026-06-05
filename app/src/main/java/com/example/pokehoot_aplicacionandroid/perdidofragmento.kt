@@ -46,7 +46,6 @@ class perdidofragmento : Fragment() {
         binding.tvPreguntasRespondidas.text = totalPreguntas.toString()
         binding.tvCorrectas.text = correctas.toString()
 
-        // Calcular precisión
         val precision = if (totalPreguntas > 0) {
             (correctas.toFloat() / totalPreguntas * 100).toInt()
         } else 0
@@ -54,7 +53,6 @@ class perdidofragmento : Fragment() {
         binding.tvPrecision.text = "$precision%"
         binding.progressPrecision.progress = precision
 
-        // Botón salir al menú
         binding.btnSalirMenu.setOnClickListener {
             findNavController().navigate(R.id.menuprincipalfragment)
         }

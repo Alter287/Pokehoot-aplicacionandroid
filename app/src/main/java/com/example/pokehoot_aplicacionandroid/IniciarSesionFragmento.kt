@@ -1,7 +1,6 @@
 package com.example.pokehoot_aplicacionandroid
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,14 +38,14 @@ class IniciarSesionFragmento : Fragment() {
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
+            val contraseña = binding.etPassword.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || contraseña.isEmpty()) {
                 Toast.makeText(requireContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show()
             } else {
                 lifecycleScope.launch {
                     try {
-                        val response = RetrofitClient.instance.login(IntentarLogear(email, password))
+                        val response = RetrofitClient.instance.login(IntentarLogear(email, contraseña))
                         if (response.success) {
                             val prefs = requireContext().getSharedPreferences("pokehoot", Context.MODE_PRIVATE)
                             prefs.edit {

@@ -19,7 +19,6 @@
         android:gravity="center_vertical"
         android:padding="18dp">
 
-        <!-- ICONO -->
         <ImageView
             android:layout_width="42dp"
             android:layout_height="42dp"
@@ -27,7 +26,6 @@
             android:layout_marginEnd="14dp"
             android:contentDescription="" />
 
-        <!-- INFO -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +36,7 @@
                 android:id="@+id/tvNombreSala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sala Kanto #4821"
+                android:text="Sala Algo #4821"
                 android:textColor="#212121"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -47,7 +45,7 @@
                 android:id="@+id/tvCodigoSala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Código: PKH4821"
+                android:text="Código: NOSE287"
                 android:textColor="#9E9E9E"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp" />
@@ -78,7 +76,6 @@
 
         </LinearLayout>
 
-        <!-- BOTON -->
         <Button
             android:id="@+id/btnEntrarSala"
             android:layout_width="wrap_content"

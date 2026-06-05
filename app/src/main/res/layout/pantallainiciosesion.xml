@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- ============================================= -->
-    <!-- CAPA 1: CONTENIDO PRINCIPAL (INMÓVIL) -->
-    <!-- ============================================= -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,7 +20,6 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="-16dp">
 
-            <!-- Pokébola decorativa arriba -->
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -54,7 +50,6 @@
                 android:textColor="#FFFFFFCC"
                 android:textSize="14sp" />
 
-            <!-- Card blanca con los campos -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +63,6 @@
                     android:orientation="vertical"
                     android:padding="24dp">
 
-                    <!-- Email -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,7 +92,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Contraseña -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -129,9 +122,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- ¿Olvidaste la contraseña? -->
-
-                    <!-- Botón iniciar sesión -->
                     <Button
                         android:id="@+id/btnLogin"
                         android:layout_width="match_parent"
@@ -144,7 +134,6 @@
                         android:textStyle="bold"
                         app:cornerRadius="12dp" />
 
-                    <!-- Separador -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -172,7 +161,6 @@
                             android:background="#E0E0E0" />
                     </LinearLayout>
 
-                    <!-- Registrarse -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

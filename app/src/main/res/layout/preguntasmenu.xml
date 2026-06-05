@@ -11,7 +11,6 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <!-- Barra superior ronda + puntuación -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +68,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Timer -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,7 +97,6 @@
                 android:background="@drawable/bg_progress_track" />
         </LinearLayout>
 
-        <!-- Chip tipo pregunta -->
         <TextView
             android:id="@+id/tvTipoPregunta"
             android:layout_width="wrap_content"
@@ -114,7 +111,6 @@
             android:paddingVertical="4dp"
             android:layout_marginBottom="8dp" />
 
-        <!-- Imagen Pokémon -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -152,9 +148,6 @@
             </FrameLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ══════════════════════════════════════════ -->
-        <!-- OPCIONES DE COLOR 2x2                      -->
-        <!-- ══════════════════════════════════════════ -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,7 +155,6 @@
             android:rowCount="2"
             android:layout_marginBottom="4dp">
 
-            <!-- Opción 1 - Amarillo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/optionYellow"
                 android:layout_width="0dp"
@@ -191,7 +183,6 @@
                     android:shadowRadius="2" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Opción 2 - Rojo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/optionRed"
                 android:layout_width="0dp"
@@ -220,7 +211,6 @@
                     android:shadowRadius="2" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Opción 3 - Azul -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/optionBlue"
                 android:layout_width="0dp"
@@ -249,7 +239,6 @@
                     android:shadowRadius="2" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Opción 4 - Verde -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/optionGreen"
                 android:layout_width="0dp"
@@ -282,7 +271,6 @@
 
     </LinearLayout>
 
-    <!-- Overlay Feedback -->
     <LinearLayout
         android:id="@+id/layoutFeedback"
         android:layout_width="match_parent"

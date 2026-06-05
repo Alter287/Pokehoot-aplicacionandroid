@@ -91,7 +91,9 @@ class dentrosalafragmento : Fragment(){
     }
 
     private fun configurarEventosSocket(nombreJugador: String) {
-        socket.on("sala_creada") { args ->  // ← este también falta, no lo borres
+
+        //Mira si la sala esta creada
+        socket.on("sala_creada") { args ->
             val data = args[0] as JSONObject
             Log.d("SALA", "Respuesta sala_creada: $data")
             if (data.getBoolean("success")) {
@@ -104,6 +106,7 @@ class dentrosalafragmento : Fragment(){
             }
         }
 
+        //Se unio un jugador y actualiza la lista
         socket.on("jugador_unido") { args ->
             val data = args[0] as JSONObject
             val jugadores = data.getJSONArray("jugadores")
@@ -113,7 +116,7 @@ class dentrosalafragmento : Fragment(){
             }
         }
 
-        // Solo este, el viejo socket.on("pregunta") { ... } hay que borrarlo
+        //Esto es porque habia un error de que cojia el socket de solitario, por lo cual lo llamo de una forma especifica para especificar cual uso cuando
         listenerPregunta = io.socket.emitter.Emitter.Listener { args ->
             val data = args[0] as JSONObject
             activity?.runOnUiThread {
@@ -130,10 +133,12 @@ class dentrosalafragmento : Fragment(){
         }
         socket.on("pregunta", listenerPregunta)
 
+        //Para crear la sala con el host
         if (esHost) {
             socket.emit("crear_sala", JSONObject().put("nombreJugador", nombreJugador))
         }
 
+        //Para cerrar la sala
         socket.on("sala_cerrada") { args ->
             val data = args[0] as JSONObject
             activity?.runOnUiThread {
@@ -174,6 +179,7 @@ class dentrosalafragmento : Fragment(){
 
     override fun onDestroyView() {
         super.onDestroyView()
+        //apago todos los sockets
         socket.off("sala_creada")
         socket.off("jugador_unido")
         socket.off("pregunta", listenerPregunta)

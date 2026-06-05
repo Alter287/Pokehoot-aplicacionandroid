@@ -124,7 +124,6 @@ class rankingfragmento : Fragment() {
             binding.rankingContainer.addView(fila)
         }
 
-        // Botón salir
         binding.btnSalir.setOnClickListener {
             findNavController().navigate(R.id.menuprincipalfragment)
         }

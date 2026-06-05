@@ -52,6 +52,7 @@ class salasfragmento : Fragment() {
         socket = SocketManager.conectar()
         configurarEventosSocket(nombreJugador)
 
+        //Cargo las salas que ya estan creadas de antes
         cargarSalas()
         binding.btnBuscarSala.setOnClickListener {
             val codigo = binding.etCodigoSala.text.toString().trim().uppercase()
@@ -65,30 +66,33 @@ class salasfragmento : Fragment() {
 
 
     private fun cargarSalas() {
-        Log.d("SALAS", "Iniciando carga de salas...")
+        Log.d("nose", "Iniciando carga de salas...")
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val response = RetrofitClient.instance.getSalas()
-                Log.d("SALAS", "Salas recibidas: ${response.salas?.size ?: 0}")
+                Log.d("nose", "Salas recibidas: ${response.salas?.size ?: 0}")
                 if (response.success) {
                     val salas = response.salas ?: emptyList()
                     adapter.actualizarSalas(salas)
                     binding.tvSalasOnline.text = "${salas.size} salas activas"
                 }
             } catch (e: Exception) {
-                Log.e("SALAS", "Error cargando salas: ${e.message}")
+                Log.e("nose", "Error cargando salas: ${e.message}")
             }
         }
     }
 
     private fun configurarEventosSocket(nombreJugador: String) {
+
+        //Conexion del socket y cargo las salas
         socket.on(Socket.EVENT_CONNECT) {
-            Log.d("SALAS", "Socket conectado, cargando salas...")
+            Log.d("nose", "Socket conectado, cargando salas...")
             activity?.runOnUiThread {
                 if (isAdded && _binding != null) cargarSalas()
             }
         }
 
+        //Me uno a la sala
         socket.on("resultado_unirse") { args ->
             val data = args[0] as JSONObject
             if (data.getBoolean("success")) {

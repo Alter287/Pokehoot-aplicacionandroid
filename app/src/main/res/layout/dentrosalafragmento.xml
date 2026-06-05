@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- CONTENIDO -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,7 +11,6 @@
         android:background="@drawable/bg_pokemon_gradient"
         android:padding="20dp">
 
-        <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,9 +49,7 @@
 
         </LinearLayout>
 
-        <!-- ESPACIO PARA HOOTHOOT -->
 
-        <!-- CODIGO SALA -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +109,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- TEXTO -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,11 +119,7 @@
             android:letterSpacing="0.15"
             android:layout_marginBottom="10dp" />
 
-        <!-- LISTA JUGADORES -->
 
-        <!-- CHAT PLACEHOLDER -->
-
-        <!-- BOTONES -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerJugadores"
             android:layout_width="match_parent"
@@ -170,7 +161,6 @@
 
     </LinearLayout>
 
-    <!-- ── OVERLAY DE CUENTA ATRÁS (inicialmente invisible) ── -->
     <FrameLayout
         android:id="@+id/countdownOverlay"
         android:layout_width="match_parent"
@@ -178,7 +168,6 @@
         android:visibility="gone"
         android:background="#CC000000">
 
-        <!-- Círculo de fondo animado - CORREGIDO con layout_gravity -->
         <View
             android:id="@+id/circleBackground"
             android:layout_width="200dp"
@@ -188,7 +177,6 @@
             android:translationX="-5dp"
             android:translationY="-19dp"/>
 
-        <!-- Número de la cuenta atrás -->
         <TextView
             android:id="@+id/tvCountdown"
             android:layout_width="wrap_content"
@@ -204,7 +192,6 @@
             android:shadowDy="4"
             android:shadowRadius="8" />
 
-        <!-- Texto inferior -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -217,7 +204,6 @@
 
     </FrameLayout>
 
-    <!-- POKEBOLAS -->
     <ImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
