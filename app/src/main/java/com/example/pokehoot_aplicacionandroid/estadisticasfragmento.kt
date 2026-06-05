@@ -41,10 +41,6 @@ class estadisticasfragmento : Fragment() {
         binding.tvMejorRacha.text = mejorRachaLocal.toString()
         binding.tvRachaActual.text = prefs.getInt("rachaActual", 0).toString()
 
-        binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.menuprincipalfragment)
-        }
-
         lifecycleScope.launch {
             try {
                 val response = RetrofitClient.instance.getPerfil(userId)
