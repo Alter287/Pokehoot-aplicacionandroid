@@ -366,33 +366,6 @@
         android:layout_marginBottom="20dp"
         android:elevation="8dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_online_badge"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="7dp"
-            android:layout_marginBottom="8dp">
-
-            <View
-                android:id="@+id/viewOnlineDot"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/shape_circle_green"
-                android:layout_marginEnd="6dp" />
-
-            <TextView
-                android:id="@+id/tvJugadoresOnline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 online"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/btnCerrarSesion"
             android:layout_width="160dp"

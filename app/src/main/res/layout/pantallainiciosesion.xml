@@ -131,15 +131,6 @@
 
                     <!-- ¿Olvidaste la contraseña? -->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginBottom="20dp"
-                        android:text="¿Olvidaste tu contraseña?"
-                        android:textColor="#3B5BA5"
-                        android:textSize="12sp" />
-
                     <!-- Botón iniciar sesión -->
                     <Button
                         android:id="@+id/btnLogin"
